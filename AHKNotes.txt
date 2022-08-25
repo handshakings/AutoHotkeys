@@ -1,0 +1,124 @@
+Setup
+Install AutoHotkeySetup and SciTE4AHK Editor
+Write script in editor and run
+To crete exe, just right click on .ahk file and hit Compile Script. The generated .exe file 
+will run without any dependencies.
+
+
+Ctrl	=	^
+LCtrl	=	<^
+RCtrl	=	>^
+Alt	=	!
+LAlt	=	<!
+RAlt	=	>!
+Shift	=	+
+LShift	=	<+
+RShift	=	>+
+Window 	=	#
+LWin	=	<#
+RWin	=	>#
+
+Mouse:
+LButton, RButton, WheelFarward, WheelBackward
+
+Get code of all keyboard and mouse keys link:
+https://www.autohotkey.com/docs/KeyList.htm
+https://www.autohotkey.com/docs/Hotkeys.htm
+
+
+::dis::Display text (When you type dis+enter/space, It would be converted into Display Text automatically)
+You can display message as Msg, Hi on typing dis
+
+To display any keys, just write them inside { ! }, {Enter}, {>}
+
+:*:ftw::Free the whales (Here after typing ftw you dont need to enter enter/space. ftw automatically converted)
+
+ 
+#IfWin is directive:
+
+#IfWinActive AHKNotes.txt - Notepad
+#Space::
+MsgBox, You pressed WIN+SPACE in Notepad.
+return
+
+Above means that if AHKNotes.txt is opened and focused and you press Win+Space
+Above means that if AHKNotes.txt is opened but not focused and you press Win+Space
+
+#IfWinExist AHKNotes.txt - Notepad
+#Space::
+MsgBox, You pressed WIN+SPACE in Notepad.
+return
+
+Initialize variable and display vlue
+myvar := 123
+Send, %myvar%
+
+Open dialog with caption(Question 1), text with (What is your first name?)
+and on ok press, inputed value is saved in OutputVar
+InputBox, OutputVar, Question 1, What is your first name?
+
+Append: 		val1 .=   val2
+Add		val1 +=  val2
+Substract	val1 -= val2
+
+Read File
+Loop, read, E:\Files\Active Directory.txt
+{
+   Loop, parse, A_LoopReadLine
+    {
+	Send, %A_LoopField%
+    }
+}
+
+Create GUI
+Gui, Add, Text, x17 y8 w120 h20, Your Name:
+Gui, Add, Text, x17 y38 w120 h200, Your Year of birth (yyyy):
+Gui, Add, Edit, x157 y8 w100 h20 vName, Name
+Gui, Add, Edit, x157 y38 w100 h20 vYear, yyyy
+Gui, Add, Button, x27 y68 w70 h20, OK
+Gui, Add, Button, x177 y68 w70 h20, Cancel
+Gui, Add, ComboBox, x177 y100 w80 h30, Text area
+Gui, Show, w577 h198 c, Generated using SmartGUI Creator
+
+
+
+Array
+MyObject := ["one", "two", "three", 17]
+Associative array(Key value pair)
+Banana := {"Color": "Yellow", "Taste": "Delicious", "Price": 3}
+
+
+#Persistent
+OnClipboardChange("ClipChanged")
+return
+ClipChanged(Type) {
+    ToolTip You copies: %Clipboard%
+    Sleep 5000
+    ToolTip
+}
+
+
+Show file content in textbox
+Gui, Add, Edit, r20 w200 vMyEdit
+FileSelectFile, file
+FileRead, FileContents, %file%
+GuiControl,, MyEdit, %FileContents%
+GuiControl, Disable, MyEdit
+Gui, Show
+return
+
+
+
+
+Gui, Add, DropDownList, vColorChoice, Black|White|Red|Green|Blue
+GuiControl, ChooseString, ColorChoice, Red
+Gui, Show
+
+Sleep, 2000
+GuiControl, Choose, ColorChoice, 4
+
+GuiControlGet, Val,, ColorChoice
+MsgBox, %Val%
+
+
+

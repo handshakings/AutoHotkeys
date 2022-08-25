@@ -1,0 +1,11 @@
+#SingleInstance Force
+
+Gui, Add, Edit, r20 w200 vMyEdit
+FileSelectFile, file
+FileRead, FileContents, %file%
+GuiControl,, MyEdit, %FileContents%
+GuiControl, Disable, MyEdit
+Gui, Show
+return
+
+

@@ -1,0 +1,4 @@
+#SingleInstance Force
+
+Gui, Add, Link,, This is a <a href="https://www.autohotkey.com">link</a>
+Gui, show
